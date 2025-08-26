@@ -1,0 +1,27 @@
+{
+  "name": "member-sync-bot",
+  "type": "module",
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.15.0+sha512.486ebc259d3e999a4e8691ce03b5cac4a71cbeca39372a9b762cb500cfdf0873e2cb16abe3d951b1ee2cf012503f027b98b6584e4df22524e0c7450d9ec7aa7b",
+  "author": {
+    "name": "devilreef",
+    "url": "https://github.com/devilr33f"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development tsx --watch src/index.ts",
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@mtcute/dispatcher": "^0.25.8",
+    "@mtcute/html-parser": "^0.25.8",
+    "@mtcute/node": "^0.25.8",
+    "env-var": "^7.5.0",
+    "tsx": "^4.20.5"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.19.0",
+    "@types/node": "^22.18.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.34.0"
+  }
+}
