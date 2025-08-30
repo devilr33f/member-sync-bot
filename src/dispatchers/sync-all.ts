@@ -1,6 +1,6 @@
-import env from "@/env.js";
-import { Dispatcher, filters } from "@mtcute/dispatcher";
-import { html, tl } from "@mtcute/node";
+import { Dispatcher, filters } from '@mtcute/dispatcher'
+import { html, tl } from '@mtcute/node'
+import env from '@/env.js'
 
 const dp = Dispatcher.child()
 
@@ -45,7 +45,7 @@ dp.onNewMessage(
     })
 
     await Promise.all(promises)
-  }
+  },
 )
 
 export default dp

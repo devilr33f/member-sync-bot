@@ -1,6 +1,9 @@
-import env from "@/env.js"
-import { ChatJoinRequestUpdateContext, Dispatcher, filters } from "@mtcute/dispatcher"
-import { html, tl } from "@mtcute/node"
+import type { ChatJoinRequestUpdateContext } from '@mtcute/dispatcher'
+import type { TelegramClient } from '@mtcute/node'
+import { Dispatcher, filters } from '@mtcute/dispatcher'
+import { html, tl } from '@mtcute/node'
+import env from '@/env.js'
+import { MemberService } from '@/services/member.js'
 
 const dp = Dispatcher.child()
 
@@ -8,12 +11,10 @@ dp.onBotChatJoinRequest(
   filters.chatId(env.telegram.chats.secondary),
   async (ctx: ChatJoinRequestUpdateContext) => {
     try {
-      const isMainChatMember = await ctx.client.getChatMembers(env.telegram.chats.main, {
-        type: 'all',
-      }).then(members => members.some(member => member.user.id === ctx.user.id))
+      const isMainChatMember = await MemberService.isMainChatsMember(ctx.client as TelegramClient, ctx.user)
 
       if (!isMainChatMember) {
-        await ctx.client.sendText(ctx.chat, html`${ctx.user.mention()} is not a member of the main chat, rejecting request.`)
+        await ctx.client.sendText(ctx.chat, html`${ctx.user.mention()} is not a member of the main chats, rejecting request.`)
         return ctx.decline()
       }
 

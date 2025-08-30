@@ -12,7 +12,7 @@ export default {
     apiHash: env.get('TELEGRAM_API_HASH').required().asString(),
     botToken: env.get('TELEGRAM_BOT_TOKEN').required().asString(),
     chats: {
-      main: env.get('TELEGRAM_MAIN_CHAT_ID').required().asInt(),
+      main: env.get('TELEGRAM_MAIN_CHAT_ID').required().asArray(',').map(id => id.trim()).filter(id => id.length > 0).map(id => Number(id)),
       secondary: env.get('TELEGRAM_SECONDARY_CHAT_IDS').required().asArray(',').map(id => id.trim()).filter(id => id.length > 0).map(id => Number(id)),
     },
   },

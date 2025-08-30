@@ -1,6 +1,6 @@
-import { Dispatcher, filters } from "@mtcute/dispatcher"
-import env from "../env.js"
-import { html, tl } from "@mtcute/node"
+import { Dispatcher, filters } from '@mtcute/dispatcher'
+import { html, tl } from '@mtcute/node'
+import env from '../env.js'
 
 const dp = Dispatcher.child()
 
